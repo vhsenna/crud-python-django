@@ -61,7 +61,7 @@ def export_pdf(request):
     response['Content-Disposition'] = 'inline; attachment; filename=Relatorio' + str(datetime.datetime.now()) + '.pdf'
     response['Content-Transfer-Encoding'] = 'binary'
 
-    cadastro = Cadastro.objects
+    cadastro = Cadastro.objects.all()
 
     html_string = render_to_string('export-pdf.html', {'cadastro': cadastro})
     html = HTML(string=html_string)
