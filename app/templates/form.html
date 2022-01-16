@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="col-8 m-auto pt-4 pb-4 text-center">
+    <h1>Formulário</h1>
+  </div>
+
+  <!-- Formulário -->
+  <div class="col-8 m-auto pt-4 pb-4 text-center">
+    <div id="result"></div>
+    <!-- Funciona para criação e edição, evitando duas páginas diferentes  -->
+    <form name="form" id="form" action="{% if db %}/update/{{db.id}}/{% else %}/create/{% endif %}" method="post">
+      {% csrf_token %}
+      <div class="form-group mt-4">Nome: {{form.nome}}</div>
+      <div class="form-group mt-4">Telefone: {{form.telefone}}</div>
+      <div class="form-group mt-4">Endereço: {{form.endereco}}</div>
+      <div class="form-group mt-4">CPF: {{form.cpf}}</div>
+      <br>
+      <input type="submit" class="btn btn-success" value="Salvar">
+    </form>
+  </div>
+
+  <div class="col-8 m-auto pt-2 pb-4">
+    <a href="/" class="btn btn-success">Voltar</a>
+  </div>
+
+  <!-- JavaScript -->
+  {% load static %}
+  <script src="{% static 'javascript.js' %}"></script>
+
+  <!-- jQuery Mask -->
+  <script src="{% static 'jquery.mask.min.js' %}"></script>
+
+  <!-- Máscara -->
+  <script src="{% static 'mask.js' %}"></script>
+</body>
+
+</html>

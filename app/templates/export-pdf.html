@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório</title>
+  <style>
+    @page {
+      size: "A4";
+      margin: 2.5cm 1.5cm 3.5cm 1.5cm;
+
+      @top-center {
+        content: "Relatório";
+      }
+
+      @bottom-right {
+        content: "Page " counter(page) " of " counter(pages);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <table class="table">
+      <thead class="thead">
+        <tr>
+          <th>Código</th>
+         <th>Nome</th>
+         <th>Telefone</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for dbs in db %}
+        <tr>
+          <th>{{dbs.id}}</th>
+          <td>{{dbs.nome}}</td>
+          <td>{{dbs.telefone}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
